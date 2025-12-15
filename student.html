@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zxx" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>图书管理系统</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <meta name="MobileOptimized" content="320">
+    <link rel="stylesheet" type="text/css" href="static/css/fonts.css">
+    <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="static/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="static/css/icofont.min.css">
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+    <link rel="stylesheet" id="theme-change" type="text/css" href="">
+    <style>
+        .add-user-btn {
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            margin: 10px 0;
+            transition: background-color 0.3s ease;
+        }
+        .add-user-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+<div class="loader">
+    <div class="spinner">
+        <img src="static/picture/loader.gif" alt="">
+    </div>
+</div>
+
+<!-- Main Body -->
+<div class="page-wrapper">
+    <div th:replace="~{header.html::title}"></div>
+
+    <!-- Sidebar Start -->
+    <aside class="sidebar-wrapper">
+        <div class="side-menu-wrap">
+            <ul class="main-menu">
+                <li>
+                    <a href="/borrow">
+                            <span class="icon-menu feather-icon">
+                                <!-- SVG code here -->
+                            </span>
+                        <span class="menu-text">
+                                借阅管理
+                            </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/books">
+                            <span class="icon-menu feather-icon">
+                                <!-- SVG code here -->
+                            </span>
+                        <span class="menu-text">
+                                书籍管理
+                            </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/student" class="active">
+                            <span class="icon-menu feather-icon">
+                                <!-- SVG code here -->
+                            </span>
+                        <span class="menu-text">
+                                学生列表
+                            </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </aside>
+    <!-- Container Start -->
+    <div class="page-wrapper">
+        <div class="main-content">
+            <!-- Page Title Start -->
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="page-title-wrapper">
+                        <div class="page-title-box ad-title-box-use">
+                            <h4 class="page-title">学生列表</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add User Button -->
+            <div class="row">
+                <div class="col-12">
+                    <button class="add-user-btn" onclick="window.location.href='/add-user'">
+                        添加用户
+                    </button>
+                </div>
+            </div>
+
+            <!-- Table Start -->
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="card table-card">
+                        <div class="card-header pb-0">
+                            <h4>学生列表</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart-holder">
+                                <div class="table-responsive">
+                                    <table class="table table-styled mb-0">
+                                        <thead>
+                                        <tr>
+                                            <th>学号</th>
+                                            <th>姓名</th>
+                                            <th>班级</th>
+                                            <th>性别</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr th:each="student : ${student_list}">
+                                            <td th:text="'#'+${student.getId()}">Scott Henry</td>
+                                            <td th:text="${student.getName()}">Scott Henry</td>
+                                            <td th:text="${student.getGrade()}">Scott Henry</td>
+                                            <td th:text="${student.getSex()}">2210 Grove Street Bethpage, NI 440014</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Script Start -->
+<script src="static/js/jquery.min.js"></script>
+<script src="static/js/popper.min.js"></script>
+<script src="static/js/bootstrap.min.js"></script>
+<script src="static/js/swiper.min.js"></script>
+<script src="static/js/apexcharts.min.js"></script>
+<script src="static/js/control-chart-apexcharts.js"></script>
+<script src="static/js/nice-select.min.js"></script>
+<script src="static/js/custom.js"></script>
+</body>
+</html>
